@@ -3,6 +3,9 @@ sudo: required
 services:
   - docker
 
+language:
+  - php
+
 before_install:
   - docker build -t slowhttptest .
   
