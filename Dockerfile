@@ -14,5 +14,4 @@ RUN rm /var/www/html/index.html
 RUN chmod -R 777 /var/www/html/
 
 
-
 CMD './star'
