@@ -5,4 +5,6 @@ services:
 
 before_install:
   - docker build -t slowhttptest .
-  - docker run -it --name slowtest slowhttptest
+  
+install:
+  - docker run -dit --name slowtest slowhttptest
