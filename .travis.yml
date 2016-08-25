@@ -4,10 +4,13 @@ services:
   - docker
 
 language:
-  - php
+  - python
 
 before_install:
   - docker build -t slowhttptest .
   
 install:
   - docker run -dit --name slowtest slowhttptest
+
+script:
+ - python test.py
