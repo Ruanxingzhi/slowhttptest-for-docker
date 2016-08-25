@@ -1,4 +1,4 @@
-FROM daocloud.io/ubuntu:15.10
+FROM ubuntu
 
 RUN apt-get update -y && apt-get install -y php5
 RUN apt-get install -y slowhttptest
