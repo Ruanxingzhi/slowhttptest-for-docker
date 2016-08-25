@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:15.10
 
 RUN apt-get update -y && apt-get install -y php5
 RUN apt-get install -y slowhttptest
