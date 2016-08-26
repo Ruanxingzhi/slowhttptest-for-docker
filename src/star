@@ -1,2 +1,2 @@
-service apache2 start
+echo "hello,world!"
 bash

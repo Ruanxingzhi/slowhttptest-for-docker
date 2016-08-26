@@ -1,6 +1,6 @@
-FROM ubuntu:15.10
+FROM php:5.6-apache
 
-RUN apt-get update -y && apt-get install -y php5
+RUN apt-get update
 RUN apt-get install -y slowhttptest
 
 EXPOSE 80
@@ -12,6 +12,5 @@ RUN cp /var/www/html/apache2.conf /etc/apache2/
 
 RUN rm /var/www/html/index.html
 RUN chmod -R 777 /var/www/html/
-
 
 CMD './star'
