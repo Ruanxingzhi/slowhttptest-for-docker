@@ -2,12 +2,9 @@ sudo: required
 
 services:
   - docker
-
-before_install:
-  - docker build -t slowhttptest .
   
 install:
-  - docker run -it --rm --name slowtest slowhttptest
+  - docker build -t slowhttptest .
 
 script:
  - echo "Hello,world!"
