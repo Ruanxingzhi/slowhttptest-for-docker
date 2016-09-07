@@ -7,7 +7,7 @@ before_install:
   - docker build -t slowhttptest .
   
 install:
-  - docker run -dit --name slowtest slowhttptest
+  - docker run -it --rm --name slowtest slowhttptest
 
 script:
  - echo "Hello,world!"
