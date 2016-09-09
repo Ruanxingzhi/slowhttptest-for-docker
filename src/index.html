@@ -79,10 +79,11 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
   <body>
 
     <div class="login">
-	<h1>时光小组DOS攻击器</h1>
-    <form action="attack.php" method="get">
+	<h1>Slow-Read攻击器</h1>
+    <form action="attack.php" method="post">
     	<input type="text" name="url" placeholder="目标网址    例：http://www.xxx.com" required="required" />
         <input type="text" name="time" placeholder="攻击秒数    例：60" required="required" />
+        <input type="text" name="proxy" placeholder="代理地址    例：xxx.xxx.xxx.xxx:80 (非必填)"/>
         <button type="submit" class="btn btn-primary btn-block btn-large">Let's Attack.</button>
     </form>
 </div>
