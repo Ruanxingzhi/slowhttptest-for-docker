@@ -1,38 +1,60 @@
-#slow-web部署手册
+#slow-web
 
 [![Build Status](https://travis-ci.org/Ruanxingzhi/slowhttptest-for-docker.svg?branch=master)](https://travis-ci.org/Ruanxingzhi/slowhttptest-for-docker)
 
+slow-web是一个基于Linux下 [slowhttptest](https://github.com/shekyan/slowhttptest) 的攻击工具。提供了网页端用于管理。
 
-slow-web是一个基于Linux下`slowhttptest`的攻击工具，提供了网页界面方便管理。目前功能并不完善，我会进一步优化。  
+Demo: http://slow.daoapp.io/
 
-首先，在daocloud.io上注册一个账号。
+## 部署
 
-然后，按下图的方法，点进“创建”：
-![创建应用](http://i2.buimg.com/567571/90fa8552a97ab76e.png)
+**服务器上部署**
 
-然后搜索`slowhttptest`:
-![搜索](http://i2.buimg.com/567571/bf926c638222f402.png)
+---
 
-在`ruanxingzhi`的镜像右边选择“部署”：
-![部署](http://i2.buimg.com/567571/17e5ee66e4ce3ef8.png)
+1. 拉取镜像：
+```bash
+docker pull ruanxingzhi/slowhttptest
+```
 
-随意填写应用名称，给`2x`的计算资源。
-![选择选项](http://i2.buimg.com/567571/d694d34959e22d7f.png)
+2. 部署到本机`8765`端口：
+```bash
+docker run -dit -p 8765:80 --name slowweb ruanxingzhi/slowhttptest
+```
 
-等待部署完成，耗时大约3分钟。之后会有访问地址：
-![地址](http://i4.buimg.com/567571/bab7792384030f1f.png)
+于是容器`slowweb`开始运行。您可以把`8765`改成任何自己想要的端口。
 
-然后进入对应的地址，开打。
+**Daocloud上部署**
 
-**slowhttptest**的攻击效果很好，如果目标服务器是中小型网站，一般一台机器就能打垮。
+---
 
-如果感觉一个进程难以打垮，可以多攻击几次。
+1. 访问[本项目地址](https://dashboard.daocloud.io/packages/6de4a584-11fa-4a6a-98d5-0b65682ee168)
+2. 点击`部署`即可。
 
-选项：
-![启动](http://i2.buimg.com/567571/7c5069609c6e7ad8.png)
->**注意**：网址必须带有`http://`或者`https://`，否则攻击不会启动。
+## 使用
+填写URL和攻击时长，点击`动手`即可。  
+您也可以填写代理。
 
-攻击报告：
-![报告](http://i2.buimg.com/567571/3731ae824ee44671.png)
+特别地，您可以通过命令行使用：
+```
+curl http://slow.daoapp.io/once.php?url=www.example.com&time=60
+```
 
->**注意**：网址必须带有`http://`或者`https://`，否则攻击不会启动！
+## 注意事项
+这个轮子对输入没有任何过滤，**有注入漏洞**。  
+因为slow-web运行于docker上，所以如果攻击器被破坏，宿主机不会有问题。
+
+另外，由于攻击报告使用了Google图表，所以查看报告需要翻墙 233
+
+## TODO
+- 做好连续攻击功能：不停地攻击，直到关机为止。（或者，直到取消为止。）
+- 完善界面，下个版本尝试[Flat UI](https://github.com/designmodo/Flat-UI)
+- 增加安全性
+- 提供更完善的API
+
+## 致谢
+slow-web使用了[Daemonite's material UI](https://github.com/Daemonite/material).
+
+![启动](http://p1.bqimg.com/567571/e4a83c3b83418347.png)
+![进行中](http://p1.bqimg.com/567571/1042553c0c43c9b2.png)
+![报告](http://p1.bqimg.com/567571/28a2705532875326.png)
