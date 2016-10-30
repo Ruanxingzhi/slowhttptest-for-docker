@@ -57,4 +57,4 @@ slow-web使用了[Daemonite's material UI](https://github.com/Daemonite/material
 
 ![启动](http://p1.bqimg.com/567571/e4a83c3b83418347.png)
 ![进行中](http://p1.bqimg.com/567571/1042553c0c43c9b2.png)
-![报告](http://p1.bqimg.com/567571/28a2705532875326.png)
+![报告](http://p1.bpimg.com/4851/28a2705532875326.png)
