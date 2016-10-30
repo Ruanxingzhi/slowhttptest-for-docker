@@ -1,6 +1,6 @@
 #slow-web部署手册
 
-[![Build Status](https://travis-ci.org/Ruanxingzhi/slowtest-for-docker.svg?branch=master)](https://travis-ci.org/Ruanxingzhi/slowtest-for-docker)
+[![Build Status](https://travis-ci.org/Ruanxingzhi/slowhttptest-for-docker.svg?branch=master)](https://travis-ci.org/Ruanxingzhi/slowhttptest-for-docker)
 
 
 slow-web是一个基于Linux下`slowhttptest`的攻击工具，提供了网页界面方便管理。目前功能并不完善，我会进一步优化。  
